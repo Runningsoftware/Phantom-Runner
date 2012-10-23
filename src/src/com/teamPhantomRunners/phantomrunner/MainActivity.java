@@ -26,5 +26,6 @@ public class MainActivity extends MapActivity {
     @Override
     protected boolean isRouteDisplayed() {
         return false;
+        
     }
 }
