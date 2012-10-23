@@ -57,6 +57,11 @@ public class DatabaseWorker extends SQLiteOpenHelper
     	 onCreate(db);
      }
      
+     /**
+      * 
+      * @param email the users email used to pick who they are.
+      * @return Returns a Cursor that contains the selected users data.
+      */
      public User get_user_data(String email)
      {
     	 SQLiteDatabase db = this.getReadableDatabase();
