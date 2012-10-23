@@ -1,5 +1,6 @@
 package com.teamPhantomRunners.phantomrunner;
 
+import android.database.Cursor;
 import android.database.sqlite.*;
 import android.util.Log;
 import android.content.Context;
@@ -14,7 +15,7 @@ public class DatabaseWorker extends SQLiteOpenHelper
      
      //User table information
      private static final String CREATE_USER_TABLE = "CREATE TABLE Users ("
-    		 + "Email TEXT PRIMARY KEY," + "Password INTEGER NOT NULL,"
+    		 + "Email TEXT PRIMARY KEY," + "Password BLOB NOT NULL," + "Name Text"
     		 + "Age INTEGER," + "Weight INTEGER," + "Height_feet INTEGER,"
     		 + "Height_inches INTEGER)";
      
@@ -54,6 +55,26 @@ public class DatabaseWorker extends SQLiteOpenHelper
     	 db.execSQL("DROP TABLE IF EXISTS Users");
     	 db.execSQL("DROP TABLE IF EXISTS Run");
     	 onCreate(db);
+     }
+     
+     public User get_user_data(String email)
+     {
+    	 SQLiteDatabase db = this.getReadableDatabase();
+    	 String query  = "SELECT * FROM Users WHERE Email = "
+    			 + email;
+    	 
+    	 Cursor curs  = db.rawQuery(query,null);
+    	 
+    	 User use = new User();
+    	 
+    	 use.set_email(curs.getString(0));
+    	 use.set_password(curs.getBlob(1));
+    	 use.set_name(curs.getString(2));
+    	 use.set_age(curs.getInt(3));
+    	 use.set_Weight(curs.getInt(4));
+    	 use.set_height(curs.getInt(5), curs.getInt(6));
+    	 
+    	 return use;
      }
      
 }
