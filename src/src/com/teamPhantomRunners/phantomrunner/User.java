@@ -12,15 +12,21 @@ public class User
 	private int height_inch;
 	private int weight;
 	private byte[] password;
+	private static final String salt = "SALTYsalt"; 
 	
    public User()
    {
-	   //I really hate git.
+	   
    }
    
    public User(String email,String name, int age, int height_feet, int height_inch, int weight)
    {
-	   
+	   this.email = email;
+	   this.name = name;
+	   this.age = age;
+	   this.height_feet = height_feet;
+	   this.height_inch = height_inch;
+	   this.weight = weight;
    }
    
    public void set_email(String email)
@@ -59,14 +65,21 @@ public class User
 	   return this.height_feet;
    }
    
+   /**
+    * Function takes a string and creates a password hash based on the users 
+    * email, a salt, and the password the user selected.
+    * @param password string representing users password
+    */
    public void set_password(String password)
    {
+	  String pass = this.email.substring(0, 3);
+	   pass =  pass + salt + password;
 	   
 	try
 	{
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 		
-		md.update(password.getBytes());
+		md.update(pass.getBytes());
 		
 		this.password = md.digest();
 		
@@ -76,7 +89,10 @@ public class User
 	}
 	   
    }
-   
+   /**
+    * 
+    * @param pass the byte array for the already created password
+    */
    public void set_password(byte[] pass)
    {
 	   this.password = pass;
