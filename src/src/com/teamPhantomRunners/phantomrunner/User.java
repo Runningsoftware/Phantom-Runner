@@ -2,7 +2,7 @@ package com.teamPhantomRunners.phantomrunner;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+//Work dammit
 public class User 
 {
 	private String email;
