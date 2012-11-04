@@ -138,11 +138,35 @@ public class DatabaseWorker extends SQLiteOpenHelper
     	 return status;
      }
      
-     //TODO Need run object to finish this 
-     public int submit_Run()
+     /**
+      * Function that inserts a runs data into the database.
+      * @param r the run object that will be inserted.
+      * @return returns the status of the query.
+      */
+     public long submit_Run(Run r)
      {
-    	 //place holder
-    	return 1; 
+    	 long status = 0;
+    	 
+    	 SQLiteDatabase db = this.getWritableDatabase();
+    	 
+    	 ContentValues content = new ContentValues();
+    	 
+    	 content.put("Date", r.getDate());
+    	 content.put(Average_Speed, r.getAverage_speed());
+    	 content.put(Speed_Units, r.getSpeed_units());
+    	 content.put(Distance, r.getDistance_units());
+    	 content.put(Distance_Units, r.getDistance_units());
+    	 content.put("Time_Hours", r.getTime_hours());
+    	 content.put(Time_Min, r.getTime_min());
+    	 content.put("Time_Sec", r.getTime_sec());
+    	 content.put(Calories, r.getCalories());
+    	 content.put(Top_Speed, r.getTop_speed());
+    	 
+    	 status = db.insert(Run_Table, Calories, content);
+    	 
+    	 db.close();
+    	 
+    	return status; 
      }
      
 }
