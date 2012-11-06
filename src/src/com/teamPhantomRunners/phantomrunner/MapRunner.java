@@ -8,13 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
-public class Map extends MapActivity {
+public class MapRunner extends MapActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true); 
         MapView mapView = (MapView) findViewById(R.id.mapview);
         mapView.setBuiltInZoomControls(true);
     }
@@ -24,7 +24,7 @@ public class Map extends MapActivity {
         getMenuInflater().inflate(R.menu.activity_map, menu);
         return true;
     }
-
+ 
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

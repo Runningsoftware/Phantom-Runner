@@ -23,7 +23,8 @@ public class PhantomRunner extends Activity {
 	    
 	    public void openMap(View view)
 	    {
-	    	Intent intent = new Intent(this, Map.class);
+	    	Intent intent = new Intent(PhantomRunner.this, MapRunner.class);
+	    	intent.putExtra("Run", "Run");
 	    	
 	    	startActivity(intent);
 	    	
