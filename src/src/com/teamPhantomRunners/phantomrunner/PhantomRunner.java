@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-public class MainActivity extends Activity {
+public class PhantomRunner extends Activity {
 
 	 @Override
 	    public void onCreate(Bundle savedInstanceState) {
