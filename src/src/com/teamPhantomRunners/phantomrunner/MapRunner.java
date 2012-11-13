@@ -1,7 +1,12 @@
 package com.teamPhantomRunners.phantomrunner;
 
+import java.util.List;
+
+import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
+import com.google.android.maps.Overlay;
+import com.google.android.maps.OverlayItem;
 
 import android.content.Context;
 import android.location.LocationListener;
@@ -13,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 
 public class MapRunner extends MapActivity {
 	private LocationManager locationManager;
@@ -20,6 +26,9 @@ public class MapRunner extends MapActivity {
 	private LocationListener locationListener;
 	private Tracking tracker;
 	private MapView mapView;
+	private List<Overlay> mapOverlays;
+	private MapOverlayItems itemizedOverlay;
+	private OverlayItem locationPoint;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +40,9 @@ public class MapRunner extends MapActivity {
         locationManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
         locationProvider = locationManager.getProvider(LocationManager.GPS_PROVIDER);
         tracker = new Tracking(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER));
+        mapOverlays = mapView.getOverlays();
+        Drawable drawable = this.getResources().getDrawable(R.drawable.androidmarker);
+        itemizedOverlay = new MapOverlayItems(drawable,this);   
         
     }
 
@@ -91,6 +103,12 @@ public class MapRunner extends MapActivity {
 				
 			}
     	};
+    	
+    	GeoPoint place = new GeoPoint(tracker.getCurrentLat(), tracker.getCurrentLong());
+        locationPoint = new OverlayItem(place, null, null);
+        
+        itemizedOverlay.addOverlay(locationPoint);
+        mapOverlays.add(itemizedOverlay);
     }
     private void enableLocationSettings()
     {

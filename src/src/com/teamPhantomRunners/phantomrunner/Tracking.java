@@ -21,6 +21,14 @@ public class Tracking {
 	{
 		currentRoute.updateRoute();
 	}
+	public int getCurrentLat()
+	{
+		return (int)currentLat;
+	}
+	public int getCurrentLong()
+	{
+		return (int)currentLong;
+	}
 	
 	public String getCurrentLocation()
 	{

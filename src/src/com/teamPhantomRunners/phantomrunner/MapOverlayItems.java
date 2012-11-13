@@ -1,5 +1,9 @@
 package com.teamPhantomRunners.phantomrunner;
 
+import java.util.ArrayList;
+
+import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import com.google.android.maps.ItemizedOverlay;
@@ -7,22 +11,42 @@ import com.google.android.maps.OverlayItem;
 
 public class MapOverlayItems extends ItemizedOverlay {
 
-	private ArrayList<OverlayItem>
-	public MapOverlayItems(Drawable arg0) {
-		super(arg0);
+	private ArrayList<OverlayItem> mapOverlays = new ArrayList<OverlayItem>();
+	private Context mapContext;
+	
+	public MapOverlayItems(Drawable defaultMarker, Context context) {
+		
+		super(boundCenterBottom(defaultMarker));
+		mapContext = context;
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	protected OverlayItem createItem(int arg0) {
-		// TODO Auto-generated method stub
-		return null;
+	public void addOverlay(OverlayItem overlay)
+	{
+		mapOverlays.add(overlay);
+		populate();
 	}
-
+	
 	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+	protected OverlayItem createItem(int i)
+	{
+		return mapOverlays.get(i);
+	}
+	
+	@Override
+	public int size()
+	{
+		return mapOverlays.size();
+	}
+	@Override
+	protected boolean onTap(int index)
+	{
+		OverlayItem item = mapOverlays.get(index);
+		AlertDialog.Builder dialog = new AlertDialog.Builder(mapContext);
+		dialog.setTitle(item.getTitle());
+		dialog.setMessage(item.getSnippet());
+		dialog.show();
+		return true;
 	}
 
 }
