@@ -2,6 +2,7 @@ package com.teamPhantomRunners.phantomrunner;
 
 import android.content.Context;
 import android.location.LocationManager;
+import android.location.Location;
 
 public class Tracking {
 	private long currentLong;
@@ -10,13 +11,13 @@ public class Tracking {
 	private LocationManager location;
 	
 	
-	public Tracking()
+	public Tracking(Location location)
 	{
 		currentRoute = new Route();
 		//location = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
 	}
 	
-	public void updateRoute()
+	public void updateRoute(Location location)
 	{
 		currentRoute.updateRoute();
 	}
