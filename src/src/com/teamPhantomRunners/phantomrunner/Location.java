@@ -6,12 +6,12 @@ public class Location {
 	
 	public Location()
 	{
-		//Code for initial location retrieval
+		//Code for current location retrieval
 	}
-	
-	public static void updateLocation()
+	public Location(long lat, long lon)
 	{
-		//code to get new location from the GPS
+		latitude = lat;
+		longitude = lon;
 	}
 	
 	public long getLatitude()
