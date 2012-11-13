@@ -1,7 +1,6 @@
 package com.teamPhantomRunners.phantomrunner;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
 //Work dammit
 public class User 
 {
@@ -12,7 +11,7 @@ public class User
 	private int height_inch;
 	private int weight;
 	private byte[] password;
-	private static final String salt = "SALTYsalt"; 
+	 
 	
    public User()
    {
@@ -72,22 +71,7 @@ public class User
     */
    public void set_password(String password)
    {
-	  String pass = this.email.substring(0, 3);
-	   pass =  pass + salt + password;
-	   
-	try
-	{
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		
-		md.update(pass.getBytes());
-		
-		this.password = md.digest();
-		
-	} catch (NoSuchAlgorithmException e) 
-	{
-		return;
-	}
-	   
+	  this.password = Utilities.Generate_Password(password, this.email); 
    }
    /**
     * 
