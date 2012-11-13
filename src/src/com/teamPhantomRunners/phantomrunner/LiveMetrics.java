@@ -25,7 +25,7 @@ public class LiveMetrics {
 		return avgSpeed;
 	}
 	
-	public int getCurrentCalories(Route curRoute)
+	public int getCurrentCalories(Route curRoute, User usr)
 	{
 		//code to calculate calories
 		return currentCalories;

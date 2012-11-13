@@ -3,6 +3,8 @@ package com.teamPhantomRunners.phantomrunner;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
 
+import android.content.Context;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ public class MapRunner extends MapActivity {
         getActionBar().setDisplayHomeAsUpEnabled(true); 
         MapView mapView = (MapView) findViewById(R.id.mapview);
         mapView.setBuiltInZoomControls(true);
+        LocationManager locationManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
     }
 
     @Override
