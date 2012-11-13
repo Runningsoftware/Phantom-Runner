@@ -1,14 +1,14 @@
 package com.teamPhantomRunners.phantomrunner;
 
-public class Location {
+public class LocationPR {
 	private long latitude;
 	private long longitude;
 	
-	public Location()
+	public LocationPR()
 	{
 		//Code for current location retrieval
 	}
-	public Location(long lat, long lon)
+	public LocationPR(long lat, long lon)
 	{
 		latitude = lat;
 		longitude = lon;

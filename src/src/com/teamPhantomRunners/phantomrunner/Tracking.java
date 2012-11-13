@@ -14,7 +14,7 @@ public class Tracking {
 	public Tracking(Location location)
 	{
 		currentRoute = new Route();
-		//location = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
+		currentRoute.updateRoute();
 	}
 	
 	public void updateRoute(Location location)

@@ -58,7 +58,7 @@ public class Timer {
 	 * 
 	 */
 	public void updateTime(){
-		while(running = true){
+		/*while(running = true){
 			Thread.sleep(1000);
 			secondsLeft--;
 			
@@ -76,13 +76,13 @@ public class Timer {
 					}
 				}
 			}
-		}
+		}*/
 	}
 	
 	public void updateTimeNegative(){
 		negative = true;
 		
-		while(running = true){
+		/*while(running = true){
 			Thread.sleep(1000);
 			secondsLeft++;
 			
@@ -95,6 +95,6 @@ public class Timer {
 					hoursLeft++;
 				}
 			}
-		}
+		}*/
 	}
 }

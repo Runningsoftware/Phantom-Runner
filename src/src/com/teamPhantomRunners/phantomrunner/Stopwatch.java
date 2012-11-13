@@ -41,7 +41,7 @@ public class Stopwatch {
 	 * 
 	 */
 	public void updateTime(){
-		while(running = true){
+		/*while(running = true){
 			Thread.sleep(1000);
 			currentSecond++;
 			
@@ -54,6 +54,6 @@ public class Stopwatch {
 					currentHour++;
 				}
 			}
-		}
+		}*/
 	}
 }

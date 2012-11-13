@@ -4,21 +4,26 @@ import java.util.LinkedList;
 
 
 public class Route {
-	private LinkedList<Location> route;
+	private LinkedList<LocationPR> route;
 	private int lastLocationIndex;
 	
 	
 	public Route()
 	{
-		route = new LinkedList<Location>();
-		route.add(new Location());
+		route = new LinkedList<LocationPR>();
+		route.add(new LocationPR());
 		lastLocationIndex = 0;
 	}
 	
 	public void updateRoute()
 	{
 		lastLocationIndex++;
-		route.add(new Location());
+		route.add(new LocationPR());
+	}
+	public void updateRoute(android.location.Location location)
+	{
+		lastLocationIndex++;
+		route.add(new LocationPR());
 	}
 	
 	public long getCurrentLat()
