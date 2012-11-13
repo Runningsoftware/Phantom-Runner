@@ -1,3 +1,5 @@
+package com.teamPhantomRunners.phantomrunner;
+
 public class Run 
 {
 	private int average_speed;
