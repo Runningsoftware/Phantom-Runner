@@ -27,7 +27,7 @@ public class LiveMetrics {
 	
 	public int getCurrentCalories(Route curRoute, User usr)
 	{
-		//code to calculate calories
+		//code to calculate calories .73*weight*distance(miles)
 		return currentCalories;
 	}
 	
