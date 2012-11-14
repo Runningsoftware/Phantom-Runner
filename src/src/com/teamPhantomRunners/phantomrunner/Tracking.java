@@ -13,13 +13,13 @@ public class Tracking {
 	
 	public Tracking(Location location)
 	{
-		currentRoute = new Route();
-		currentRoute.updateRoute();
+		currentRoute = new Route(location);
+		currentRoute.updateRoute(location);
 	}
 	
 	public void updateRoute(Location location)
 	{
-		currentRoute.updateRoute();
+		currentRoute.updateRoute(location);
 	}
 	public int getCurrentLat()
 	{

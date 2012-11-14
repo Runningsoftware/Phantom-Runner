@@ -1,12 +1,15 @@
 package com.teamPhantomRunners.phantomrunner;
 
+import android.location.Location;
+
 public class LocationPR {
-	private long latitude;
-	private long longitude;
+	private double latitude;
+	private double longitude;
 	
-	public LocationPR()
+	public LocationPR(Location location)
 	{
-		//Code for current location retrieval
+		latitude = location.getLatitude();
+		longitude = location.getLongitude();
 	}
 	public LocationPR(long lat, long lon)
 	{
@@ -14,11 +17,11 @@ public class LocationPR {
 		longitude = lon;
 	}
 	
-	public long getLatitude()
+	public double getLatitude()
 	{
 		return latitude;
 	}
-	public long getLongitude()
+	public double getLongitude()
 	{
 		return longitude;
 	}
