@@ -10,5 +10,6 @@
     <string name="menu_timer">Timer</string>
     <string name="menu_challenge">Challenge</string>
     <string name="menu_logs">Logs</string>
+    <string name="item_selected">Shows the item selected</string>
 
 </resources>
