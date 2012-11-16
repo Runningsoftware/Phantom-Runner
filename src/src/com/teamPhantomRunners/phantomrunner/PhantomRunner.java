@@ -1,12 +1,12 @@
 package com.teamPhantomRunners.phantomrunner;
 
 
+import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class PhantomRunner extends Activity {
@@ -15,6 +15,9 @@ public class PhantomRunner extends Activity {
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_main);
+	        
+	        ActionBar actionBar = getActionBar();
+	        actionBar.setDisplayHomeAsUpEnabled(true);
 	    }
 
 	    @Override
@@ -47,5 +50,22 @@ public class PhantomRunner extends Activity {
 	    }
 	    
     
+	    
+	    
+	    
+	    
+	    
+	    @Override
+	    public boolean onOptionsItemSelected(MenuItem item) {
+	        //switch (item.getItemId()) {
+	          //  case 
+	             //   return true;
+	            //default:
+	                return super.onOptionsItemSelected(item);
+	        //}
+	    }
+	    
+	    
+	    
    
 }

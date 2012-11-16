@@ -1,6 +1,39 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_settings"
-        android:title="@string/menu_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_run"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:title="@string/menu_run"/>
+    <item
+        android:id="@+id/menu_timer"
+        android:orderInCategory="2"
+        android:showAsAction="always"
+        android:title="@string/menu_timer"/>
+    <item
+        android:id="@+id/menu_challenge"
+        android:orderInCategory="3"
+        android:showAsAction="always"
+        android:title="@string/menu_challenge"/>
+    <item
+        android:id="@+id/menu_logs"
+        android:orderInCategory="4"
+        android:showAsAction="always"
+        android:title="@string/menu_logs"/>
+    <item
+        android:id="@+id/menu_instructions"
+        android:orderInCategory="5"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_instructions"/>
+    <item
+        android:id="@+id/menu_unlocks"
+        android:orderInCategory="6"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_unlocks"/>
+    <item
+        android:id="@+id/menu_settings"
+        android:orderInCategory="7"
+        android:showAsAction="never"
+        android:title="@string/menu_settings"/>
+
 </menu>
