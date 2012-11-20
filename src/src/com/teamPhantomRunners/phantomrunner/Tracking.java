@@ -23,11 +23,11 @@ public class Tracking {
 	}
 	public int getCurrentLat()
 	{
-		return (int)currentLat;
+		return (int) (currentRoute.getCurrentLat() * 1E6);
 	}
 	public int getCurrentLong()
 	{
-		return (int)currentLong;
+		return (int) (currentRoute.getCurrentLong() * 1E6);
 	}
 	
 	public String getCurrentLocation()
