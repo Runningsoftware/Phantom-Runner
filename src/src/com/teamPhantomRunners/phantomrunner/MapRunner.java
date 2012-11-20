@@ -95,7 +95,7 @@ public class MapRunner extends MapActivity {
                 mapOverlays.add(itemizedOverlay);
                 
                 
-                //mapController.setZoom(16);
+                mapController.animateTo(place);
         		
         	}
 
@@ -191,7 +191,7 @@ public class MapRunner extends MapActivity {
     		tracker = new Tracking(curLocation);
     	}
         mapOverlays = mapView.getOverlays();
-        Drawable drawable = this.getResources().getDrawable(R.drawable.androidmarker);
+        Drawable drawable = this.getResources().getDrawable(R.drawable.runner_dot_blue);
         itemizedOverlay = new MapOverlayItems(drawable,this);
     	
     	GeoPoint place = new GeoPoint(tracker.getCurrentLat(), tracker.getCurrentLong());
