@@ -15,6 +15,7 @@ public class Route {
 		route = new LinkedList<LocationPR>();
 		route.add(new LocationPR(location));
 		lastLocationIndex = 0;
+		
 	}
 	
 	public void updateRoute(Location location)
@@ -31,6 +32,7 @@ public class Route {
 	{
 		return route.get(lastLocationIndex).getLongitude();
 	}
+	
 	public double getPreviousLat()
 	{
 		if (lastLocationIndex > 0)
@@ -44,6 +46,22 @@ public class Route {
 			return route.get(lastLocationIndex-1).getLongitude();
 		else
 			return getCurrentLong();
+	}
+	
+	public double getStartLat()
+	{
+		if(this.route.isEmpty())
+			return -1;
+		
+		return route.getFirst().getLatitude();
+	}
+	
+	public double getStartLon()
+	{
+		if(this.route.isEmpty())
+			return -1;
+		
+		return route.getFirst().getLongitude();
 	}
 	
 	public String getRoute()
