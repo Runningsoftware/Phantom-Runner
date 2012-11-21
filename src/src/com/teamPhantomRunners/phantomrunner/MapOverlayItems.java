@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 
 import com.google.android.maps.ItemizedOverlay;
+import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 
 public class MapOverlayItems extends ItemizedOverlay {
@@ -48,5 +51,13 @@ public class MapOverlayItems extends ItemizedOverlay {
 		dialog.show();
 		return true;
 	}
+	/*
+	public void draw(Canvas canvas, MapView mapView, boolean shadow)
+	{
+		super.draw(canvas, mapView, shadow);
+		
+		Paint paint = new Paint();
+		
+	}*/
 
 }

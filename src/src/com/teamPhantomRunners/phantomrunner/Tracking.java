@@ -30,6 +30,11 @@ public class Tracking {
 		return (int) (currentRoute.getCurrentLong() * 1E6);
 	}
 	
+	public Route getRoute()
+	{
+		return currentRoute;
+	}
+	
 	public String getCurrentLocation()
 	{
 		return currentLat + "," + currentLong;

@@ -175,7 +175,7 @@ public class MapRunner extends MapActivity {
     	
     	
     	
-    	locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+    	locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 1, locationListener);
     	
     	Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         //while(lastLocation == null)
