@@ -37,14 +37,18 @@ public class DistanceUp {
 	 * 
 	 *  Uses the haversin formula
 	 *  
-	 *  @param lon1
-	 *  @param lat1
-	 *  @param lon2
-	 *  @param lat2
+	 *  @param Route locale
 	 */
-	public void addDistance(double lon1, double lat1, double lon2, double lat2){
+	public void addDistance(Route locale){
 		
 		int R = 6371; // km
+		
+		double lat1, lat2, lon1, lon2;
+		
+		lat1 = locale.getPreviousLat();
+		lat2 = locale.getCurrentLat();
+		lon1 = locale.getPreviousLong();
+		lon2 = locale.getCurrentLong();
 		
 		double dLat = Math.toRadians(lat2 - lat1);
 		double dLon = Math.toRadians(lon2 - lon1);
