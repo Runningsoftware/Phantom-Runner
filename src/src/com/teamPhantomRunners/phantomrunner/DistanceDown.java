@@ -13,22 +13,34 @@ public class DistanceDown {
 	/**
 	 * distanceLeft represents how far the user has run and will be
 	 * displayed on the map
+	 * 
+	 * distanceTotal represents how far the has run
 	 */
 	private double distanceLeft;
+	private double distanceTotal;
 	
 	/**
 	 * Class constructor initializes currentDistance according to the parameter
 	 */
 	public DistanceDown(double goal){
 		distanceLeft = goal;
+		distanceTotal = 0;
 	}
 	
 	/**
 	 * Accessor for distanceLeft
-	 * @return currentDistance
+	 * @return distanceLeft
 	 */
 	public double getDistance(){
 		return distanceLeft;
+	}
+	
+	/**
+	 * Accessor for distanceTotal
+	 * @return distanceTotal
+	 */
+	public double getDistanceTotal(){
+		return distanceTotal;
 	}
 	
 	/**
@@ -37,14 +49,18 @@ public class DistanceDown {
 	 * 
 	 * Uses the haversin formula
 	 * 
-	 *  @param lon1
-	 *  @param lat1
-	 *  @param lon2
-	 *  @param lat2
+	 *  @param route locale
 	 */
-	public void removeDistance(double lon1, double lat1, double lon2, double lat2){
+	public void removeDistance(Route locale){
 		
 		int R = 6371; // km
+		
+		double lat1, lat2, lon1, lon2;
+		
+		lat1 = locale.getPreviousLat();
+		lat2 = locale.getCurrentLat();
+		lon1 = locale.getPreviousLong();
+		lon2 = locale.getCurrentLong();
 		
 		double dLat = Math.toRadians(lat2 - lat1);
 		double dLon = Math.toRadians(lon2 - lon1);
@@ -60,5 +76,6 @@ public class DistanceDown {
 		double d = R*c;
 		
 		distanceLeft = distanceLeft - d;
+		distanceTotal = distanceTotal + d;
 	}
 }
