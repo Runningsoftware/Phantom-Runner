@@ -239,9 +239,10 @@ public class MapRunner extends MapActivity {
     	
     }
     
-    public void onStopPressed()
+    public void onStopPressed(View view)
     {
     	//Code to save the metrics and information from the current run
+    	onPauseSwitch(view);
     	currentRun.setDistance(LiveMetrics.getTotalDistance(tracker.getRoute()));
     	
     	
