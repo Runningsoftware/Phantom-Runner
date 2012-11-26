@@ -5,11 +5,13 @@ import android.location.Location;
 public class LocationPR {
 	private double latitude;
 	private double longitude;
+	private long timeStamp;
 	
 	public LocationPR(Location location)
 	{
 		latitude = location.getLatitude();
 		longitude = location.getLongitude();
+		timeStamp = System.currentTimeMillis();
 	}
 	public LocationPR(long lat, long lon)
 	{
@@ -24,6 +26,10 @@ public class LocationPR {
 	public double getLongitude()
 	{
 		return longitude;
+	}
+	public long getTimeStamp()
+	{
+		return timeStamp;
 	}
 	public String toString()
 	{

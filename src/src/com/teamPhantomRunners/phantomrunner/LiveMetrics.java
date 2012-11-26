@@ -37,12 +37,12 @@ public class LiveMetrics {
 		return currentCalories;
 	}
 	
-	public double getTotalDistance(Route curRoute)
+	public static double getTotalDistance(Route curRoute)
 	{
 		return getDistance(curRoute.getStartLat(), curRoute.getCurrentLat(), curRoute.getStartLon(), curRoute.getCurrentLong());
 	}
 	
-	public double getDistance(double latitude1, double latitude2, double longitude1, double longitude2)
+	public static double getDistance(double latitude1, double latitude2, double longitude1, double longitude2)
 	{
 		//In order to use trig functions everything has to be in Radians
 				double lat1 = Math.toRadians(latitude1);

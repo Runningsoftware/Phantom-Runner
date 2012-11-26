@@ -34,13 +34,15 @@ public final class R {
         public static final int imageButton6=0x7f070006;
         public static final int imageButton7=0x7f070007;
         public static final int mapview=0x7f070008;
-        public static final int menu_challenge=0x7f07000b;
-        public static final int menu_instructions=0x7f07000d;
-        public static final int menu_logs=0x7f07000c;
-        public static final int menu_run=0x7f070009;
-        public static final int menu_settings=0x7f07000f;
-        public static final int menu_timer=0x7f07000a;
-        public static final int menu_unlocks=0x7f07000e;
+        public static final int menu_challenge=0x7f07000d;
+        public static final int menu_instructions=0x7f07000f;
+        public static final int menu_logs=0x7f07000e;
+        public static final int menu_run=0x7f07000b;
+        public static final int menu_settings=0x7f070011;
+        public static final int menu_timer=0x7f07000c;
+        public static final int menu_unlocks=0x7f070010;
+        public static final int pause_button=0x7f070009;
+        public static final int stopButton=0x7f07000a;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -61,6 +63,8 @@ public final class R {
         public static final int menu_settings=0x7f040001;
         public static final int menu_timer=0x7f040007;
         public static final int menu_unlocks=0x7f040005;
+        public static final int on_pause=0x7f04000b;
+        public static final int stop_string=0x7f04000c;
         public static final int title_activity_main=0x7f040002;
         public static final int title_activity_map=0x7f040003;
     }

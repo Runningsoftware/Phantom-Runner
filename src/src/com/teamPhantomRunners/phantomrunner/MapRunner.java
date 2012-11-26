@@ -21,47 +21,58 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.support.v4.app.NavUtils;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 
 public class MapRunner extends MapActivity {
-	private LocationManager locationManager;
-	private LocationProvider locationProvider;
-	private LocationListener locationListener;
-	private Tracking tracker;
-	private MapView mapView;
-	private MapController mapController;
-	private List<Overlay> mapOverlays;
-	private MapOverlayItems itemizedOverlay;
-	private OverlayItem locationPoint;
-	private Location curLocation;
-	private boolean locationAvailable = true;
-
+	private LocationManager locationManager;		//GPS Manager for the location information
+	private LocationProvider locationProvider;		//Unused currently
+	private LocationListener locationListener;		//Listens for the GPS Location to change
+	private Tracking tracker;						//Stores the GPS information
+	private MapView mapView;						//The map view data for overlay items
+	private MapController mapController;			//The required controller for the map
+	private List<Overlay> mapOverlays;				//The list of Overlays for the Map View
+	private MapOverlayItems itemizedOverlay;		//The items on the overlay
+	private OverlayItem locationPoint;				//The loacation point
+	private Location curLocation;					//Current Location information
+	private boolean locationAvailable = true;		//Unused boolean depricated
+	private boolean onPause = true;					//Flag for the location when the user presses pause
+	private Run currentRun = new Run();
     @Override
+    /**
+     * The method that happens when the view first gets created. 
+     */
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        //enableLocationSettings();
+        
         getActionBar().setDisplayHomeAsUpEnabled(true); 
         
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.setBuiltInZoomControls(false);
         mapController = mapView.getController();
-        mapController.setZoom(16);      
+        mapController.setZoom(18);      
         
-        registerLocationListeners();
+        registerLocationListeners();				//Start tracking processes
         
     }
     
+    /**
+     * Location Tracking start up method.
+     */
     private void registerLocationListeners(){
     	
+    	//Assign the location manager to a variable for use
     	locationManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
     	
+    	//Set up the type of criteria needed. In this case GPS only
     	Criteria fine = new Criteria();
     	fine.setAccuracy(Criteria.ACCURACY_FINE);
     	
+    	//Get the last known location in order to get started faster.
     	curLocation = locationManager.getLastKnownLocation(locationManager.getBestProvider(fine, true));
     	
         
@@ -82,20 +93,28 @@ public class MapRunner extends MapActivity {
         		if(location.getAccuracy() > 1000 && location.hasAccuracy())
         			locationManager.removeUpdates(this);
                 
-                if(tracker != null)
-                	tracker.updateRoute(curLocation);
-                else
-                	tracker = new Tracking(curLocation);
+        		if(!onPause)
+        		{
+        			if(tracker != null)
+        				tracker.updateRoute(curLocation);
+        			else
+        				tracker = new Tracking(curLocation);
                 
-                GeoPoint place = new GeoPoint(tracker.getCurrentLat(), tracker.getCurrentLong());
+        			GeoPoint place = new GeoPoint(tracker.getCurrentLat(), tracker.getCurrentLong());
           
-                locationPoint = new OverlayItem(place, null, null);
+        			locationPoint = new OverlayItem(place, null, null);
                 
-                itemizedOverlay.addOverlay(locationPoint);
-                mapOverlays.add(itemizedOverlay);
+        			itemizedOverlay.addOverlay(locationPoint);
+        			mapOverlays.add(itemizedOverlay);
                 
                 
-                mapController.animateTo(place);
+        			mapController.animateTo(place);
+        		}else
+        		{
+        			GeoPoint place = new GeoPoint((int)(curLocation.getLatitude()*1E6),(int)(curLocation.getLongitude()*1E6));
+        			
+        			mapController.animateTo(place);
+        		}
         		
         	}
 
@@ -212,6 +231,20 @@ public class MapRunner extends MapActivity {
     {
     	super.onStop();
     	locationManager.removeUpdates(locationListener);
+    }
+    
+    public void onPauseSwitch(View view)
+    {
+    	onPause = !onPause;
+    	
+    }
+    
+    public void onStopPressed()
+    {
+    	//Code to save the metrics and information from the current run
+    	currentRun.setDistance(LiveMetrics.getTotalDistance(tracker.getRoute()));
+    	
+    	
     }
     
 

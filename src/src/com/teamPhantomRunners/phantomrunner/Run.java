@@ -1,5 +1,8 @@
 package com.teamPhantomRunners.phantomrunner;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Run 
 {
 	private int average_speed;
@@ -11,9 +14,21 @@ public class Run
 	private int time_sec;
 	private int calories;
 	private int top_speed;
-	private String Date;
+	private String run_date;
 	
-	
+	public Run()
+	{
+		average_speed = 0;
+		speed_units = "mph";
+		distance = 0.0;
+		distance_units = "m";
+		time_hours = 0;
+		time_min = 0;
+		time_sec = 0;
+		calories = 0;
+		top_speed = 0;
+		run_date = Calendar.getInstance().toString();
+	}
 	public int getAverage_speed() {
 		return average_speed;
 	}
@@ -69,10 +84,10 @@ public class Run
 		this.top_speed = top_speed;
 	}
 	public String getDate() {
-		return Date;
+		return run_date;
 	}
 	public void setDate(String date) {
-		Date = date;
+		run_date = date;
 	}
 
 	
