@@ -39,8 +39,10 @@ public class MapRunner extends MapActivity {
 	private Location curLocation;					//Current Location information
 	private boolean locationAvailable = true;		//Unused boolean depricated
 	private boolean onPause = true;					//Flag for the location when the user presses pause
-	private Run currentRun = new Run();
-    @Override
+	private Run currentRun = new Run();				//Holder for the current run
+	private DistanceUp currentDistance = new DistanceUp();		//Increments the distance on the fly
+	private ApplicationPR appController; 			//Controller for global Application data
+	@Override
     /**
      * The method that happens when the view first gets created. 
      */
@@ -49,13 +51,14 @@ public class MapRunner extends MapActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         
+        
         getActionBar().setDisplayHomeAsUpEnabled(true); 
         
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.setBuiltInZoomControls(false);
         mapController = mapView.getController();
         mapController.setZoom(18);      
-        
+        appController = (ApplicationPR)getApplicationContext();
         registerLocationListeners();				//Start tracking processes
         
     }
@@ -109,6 +112,8 @@ public class MapRunner extends MapActivity {
                 
                 
         			mapController.animateTo(place);
+        			
+        			currentDistance.addDistance(tracker.getRoute());
         		}else
         		{
         			GeoPoint place = new GeoPoint((int)(curLocation.getLatitude()*1E6),(int)(curLocation.getLongitude()*1E6));
@@ -243,7 +248,12 @@ public class MapRunner extends MapActivity {
     {
     	//Code to save the metrics and information from the current run
     	onPauseSwitch(view);
-    	currentRun.setDistance(LiveMetrics.getTotalDistance(tracker.getRoute()));
+    	if(tracker != null)
+    	{
+    	
+    		currentRun.setDistance(currentDistance.getDistance());
+    		
+    	}
     	
     	
     }

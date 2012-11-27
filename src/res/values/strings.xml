@@ -11,7 +11,9 @@
     <string name="menu_challenge">Challenge</string>
     <string name="menu_logs">Logs</string>
     <string name="item_selected">Shows the item selected</string>
-    <string name ="on_pause">Pause</string>
+    <string name="on_pause">Pause</string>
     <string name="stop_string">Stop</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_user_input">UserInput</string>
 
 </resources>

@@ -72,6 +72,12 @@ public class PhantomRunner extends Activity {
 		case R.id.menu_settings:
 
 			editText.setText("settings");
+			
+			Intent intentUser = new Intent(PhantomRunner.this, UserInput.class);
+			
+			intentUser.putExtra(EXTRA_MESSAGE, R.string.menu_run);
+
+			startActivity(intentUser);
 
 			return true;
 
@@ -84,6 +90,24 @@ public class PhantomRunner extends Activity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	public void runStart(View view)
+	{
+		Intent intent = new Intent(PhantomRunner.this, MapRunner.class);
+		
+		intent.putExtra(EXTRA_MESSAGE, R.string.menu_run);
+
+		startActivity(intent);
+	}
+	
+	public void runUserInput(View view)
+	{
+		Intent intentUser = new Intent(PhantomRunner.this, UserInput.class);
+		
+		intentUser.putExtra(EXTRA_MESSAGE, R.string.menu_run);
+
+		startActivity(intentUser);
 	}
 
 
