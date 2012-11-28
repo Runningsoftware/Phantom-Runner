@@ -42,18 +42,18 @@ public class DatabaseWorker extends SQLiteOpenHelper
      private static final int DATABASE_VERSION = 1;
      
      //User table information
-     private static final String CREATE_USER_TABLE = "CREATE TABLE" + Users_Table + "("
-    		 + Email + "TEXT PRIMARY KEY," + Password + "BLOB NOT NULL," + Name + "Text"
-    		 + Age + "INTEGER," + Weight + "INTEGER," + Height_Feet + "INTEGER,"
-    		 + Height_Inches + "INTEGER)";
+     private static final String CREATE_USER_TABLE = "CREATE TABLE " + Users_Table + "("
+    		 + Email + " TEXT PRIMARY KEY," + Password + " BLOB NOT NULL," + Name + " TEXT, "
+    		 + Age + " INTEGER," + Weight + " INTEGER," + Height_Feet + " INTEGER,"
+    		 + Height_Inches + " INTEGER)";
      
      //Run table information
-     private static final String CREATE_RUN_TABLE = "CREATE TABLE" + Run_Table + "("
-    		 + Run_num + "INTEGER PRIMARY KEY," + Date + "TEXT NOT NULL,"
-    		 + Average_Speed + "INTEGER NOT NULL," + Speed_Units + "INTEGER NOT NULL,"
-    		 + Distance + "REAL NOT NULL," + Distance_Units + "INTEGER,"
-    		 + Time_Hours + "INTEGER NOT NULL," + Time_Min + "INTEGER NOT NULL,"
-    		 + Time_Sec + "INTEGER NOT NULL," + Calories + "INTEGER," + Top_Speed + "INTEGER)";
+     private static final String CREATE_RUN_TABLE = "CREATE TABLE " + Run_Table + "("
+    		 + Run_num + " INTEGER PRIMARY KEY," + Date + " TEXT NOT NULL,"
+    		 + Average_Speed + " INTEGER NOT NULL," + Speed_Units + " INTEGER NOT NULL,"
+    		 + Distance + " REAL NOT NULL," + Distance_Units + " INTEGER,"
+    		 + Time_Hours + " INTEGER NOT NULL," + Time_Min + " INTEGER NOT NULL,"
+    		 + Time_Sec + " INTEGER NOT NULL," + Calories + " INTEGER," + Top_Speed + " INTEGER)";
      
      
      public DatabaseWorker(Context context)

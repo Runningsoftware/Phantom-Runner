@@ -17,6 +17,7 @@ public class ApplicationPR extends Application {
 	{
 		super.onCreate();
 		user = new User();
+		userDatabase = new DatabaseWorker(this.getBaseContext());
 		//userDatabase = new DatabaseWorker();
 	}
 	
