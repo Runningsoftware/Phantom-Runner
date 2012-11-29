@@ -64,11 +64,11 @@ public class Route {
 		return route.getFirst().getLongitude();
 	}
 	
-	public String getTime()
+	public long getTime()
 	{
 		long runTime = route.getLast().getTimeStamp() -route.getFirst().getTimeStamp();
 		
-		return Long.toString(runTime/1000)+ " s";
+		return runTime/1000;
 	}
 	public String getRoute()
 	{

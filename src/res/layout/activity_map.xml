@@ -41,9 +41,9 @@
         android:layout_marginTop="17dp"
         android:text="@string/clock"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/avgSpeed_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/time_run"
         android:layout_alignBottom="@+id/time_run"
-        android:layout_alignRight="@+id/textView3"
+        android:layout_alignRight="@+id/avgSpeed_txt"
         android:text="@string/distance_run"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

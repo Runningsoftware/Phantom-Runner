@@ -115,8 +115,12 @@ public class MapRunner extends MapActivity {
         			
         			currentDistance.addDistance(tracker.getRoute());
         			
-        			((TextView)findViewById(R.id.distanceText)).setText(Double.toString((Math.round(currentDistance.getDistance()*1000))/100.0) + " m");
-        			((TextView)findViewById(R.id.time_run)).setText(tracker.getRoute().getTime());
+        			double dist = (Math.round(currentDistance.getDistance()*1000))/10.0;
+        			((TextView)findViewById(R.id.distanceText)).setText(Double.toString(dist) + " m");
+        			long tme = tracker.getRoute().getTime();
+        			((TextView)findViewById(R.id.time_run)).setText(Long.toString(tme) +" s");
+        			double avgSpd = Math.round((dist/tme)*1000)/1000.0;
+        			((TextView)findViewById(R.id.avgSpeed_txt)).setText(Double.toString(avgSpd)+ " m/s");
         		}else
         		{
         			GeoPoint place = new GeoPoint((int)(curLocation.getLatitude()*1E6),(int)(curLocation.getLongitude()*1E6));

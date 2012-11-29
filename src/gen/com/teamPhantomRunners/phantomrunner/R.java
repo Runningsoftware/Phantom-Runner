@@ -25,12 +25,13 @@ public final class R {
         public static final int unlock_button=0x7f02000b;
     }
     public static final class id {
-        public static final int ageInput=0x7f07001b;
+        public static final int ageInput=0x7f07001c;
+        public static final int avgSpeed_txt=0x7f07000c;
         public static final int distanceText=0x7f07000d;
         public static final int editText1=0x7f070000;
         public static final int emailInput=0x7f070012;
-        public static final int heightInputFt=0x7f070016;
-        public static final int heightInputIn=0x7f070017;
+        public static final int heightInputFt=0x7f070017;
+        public static final int heightInputIn=0x7f070018;
         public static final int imageButton1=0x7f070001;
         public static final int imageButton2=0x7f070002;
         public static final int imageButton3=0x7f070003;
@@ -39,27 +40,27 @@ public final class R {
         public static final int imageButton6=0x7f070006;
         public static final int imageButton7=0x7f070007;
         public static final int mapview=0x7f070008;
-        public static final int menu_challenge=0x7f07001e;
-        public static final int menu_instructions=0x7f070020;
-        public static final int menu_logs=0x7f07001f;
-        public static final int menu_run=0x7f07001c;
-        public static final int menu_settings=0x7f070022;
-        public static final int menu_timer=0x7f07001d;
-        public static final int menu_unlocks=0x7f070021;
+        public static final int menu_challenge=0x7f07001f;
+        public static final int menu_instructions=0x7f070021;
+        public static final int menu_logs=0x7f070020;
+        public static final int menu_run=0x7f07001d;
+        public static final int menu_settings=0x7f070023;
+        public static final int menu_timer=0x7f07001e;
+        public static final int menu_unlocks=0x7f070022;
         public static final int nameInput=0x7f07000e;
-        public static final int passwordInput=0x7f070013;
+        public static final int passwordInput=0x7f070014;
         public static final int pause_button=0x7f070009;
         public static final int saveButton=0x7f07000f;
         public static final int stopButton=0x7f07000a;
         public static final int textView1=0x7f070010;
         public static final int textView2=0x7f070011;
-        public static final int textView3=0x7f07000c;
-        public static final int textView4=0x7f070015;
-        public static final int textView5=0x7f070019;
-        public static final int textView6=0x7f07001a;
-        public static final int textView7=0x7f070014;
+        public static final int textView3=0x7f070013;
+        public static final int textView4=0x7f070016;
+        public static final int textView5=0x7f07001a;
+        public static final int textView6=0x7f07001b;
+        public static final int textView7=0x7f070015;
         public static final int time_run=0x7f07000b;
-        public static final int weightInput=0x7f070018;
+        public static final int weightInput=0x7f070019;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
