@@ -7,7 +7,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.support.v4.app.NavUtils;
-
+/**
+ * Activity to input user data
+ * @author Andrew
+ *
+ */
 public class UserInput extends Activity {
 	
 	private ApplicationPR appController; 			//Controller for global Application data

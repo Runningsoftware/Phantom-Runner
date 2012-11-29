@@ -9,7 +9,6 @@ import android.content.Context;
 public class DatabaseWorker extends SQLiteOpenHelper
 {
 	//--------- Begin Table and Column names ------------
-	//Work damn you.
 	//Run Table
 	  private static final String Run_Table = "Run";
 	  private static final String Run_num = "Run_num";

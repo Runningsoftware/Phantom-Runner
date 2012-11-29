@@ -1,7 +1,11 @@
 package com.teamPhantomRunners.phantomrunner;
 
 
-//Work dammit
+/**
+ * Holds all of the Users data outside of the database for easy access
+ * @author Michael
+ *
+ */
 public class User 
 {
 	private String email;

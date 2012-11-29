@@ -11,7 +11,11 @@ import android.graphics.drawable.Drawable;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
-
+/**
+ * Google overlay class for creating objects on the map that are linked to gps data
+ * @author Andrew
+ *
+ */
 public class MapOverlayItems extends ItemizedOverlay {
 
 	private ArrayList<OverlayItem> mapOverlays = new ArrayList<OverlayItem>();

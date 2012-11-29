@@ -4,7 +4,11 @@ import java.util.LinkedList;
 
 import android.location.Location;
 
-
+/**
+ * Route holds an array of LocationPRs in order to keep track of all of the GPS data
+ * @author Andrew
+ *
+ */
 public class Route {
 	private LinkedList<LocationPR> route;
 	private int lastLocationIndex;

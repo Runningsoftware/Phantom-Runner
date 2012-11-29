@@ -3,7 +3,11 @@ package com.teamPhantomRunners.phantomrunner;
 import android.content.Context;
 import android.location.LocationManager;
 import android.location.Location;
-
+/**
+ * Class to handle the calculation of data in Route
+ * @author Andrew
+ *
+ */
 public class Tracking {
 	private long currentLong;
 	private long currentLat;

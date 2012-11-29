@@ -4,7 +4,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-
+/**
+ * Class for database calculations
+ * @author Michael
+ *
+ */
 public class Utilities 
 {
 	private static final String salt = "SALTYsalt";

@@ -1,5 +1,9 @@
 package com.teamPhantomRunners.phantomrunner;
-
+/**
+ * Class to calculate metrics on the fly
+ * @author Michael
+ *
+ */
 public class LiveMetrics {
 	private int currentSpeed;
 	private int currentCalories;

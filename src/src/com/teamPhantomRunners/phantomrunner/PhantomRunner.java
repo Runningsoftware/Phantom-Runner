@@ -9,7 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-
+/**
+ * Starting view everything gets launched from here
+ * @author All
+ *
+ */
 public class PhantomRunner extends Activity {
 	
 	public final static String EXTRA_MESSAGE = "com.example.PhantomRunner.MESSAGE";
@@ -91,7 +95,10 @@ public class PhantomRunner extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+	/**
+	 * Launch the MapRunner map view
+	 * @param view
+	 */
 	public void runStart(View view)
 	{
 		Intent intent = new Intent(PhantomRunner.this, MapRunner.class);
@@ -100,7 +107,10 @@ public class PhantomRunner extends Activity {
 
 		startActivity(intent);
 	}
-	
+	/**
+	 * Launch the User input view
+	 * @param view
+	 */
 	public void runUserInput(View view)
 	{
 		Intent intentUser = new Intent(PhantomRunner.this, UserInput.class);
