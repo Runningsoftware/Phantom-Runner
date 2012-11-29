@@ -197,7 +197,7 @@ public class MapRunner extends MapActivity {
     	super.onStart();
     	
     	final boolean gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-    	
+    	//Code to enable the GPS if turned off. Not quite working right
     	if(!gpsEnabled)
     	{
     		AlertDialog.Builder dialog = new AlertDialog.Builder(getBaseContext());
@@ -207,26 +207,25 @@ public class MapRunner extends MapActivity {
     		enableLocationSettings();
     		
     	}
-    	
-    	
-    	
+    	//Initialize the Location Manager to update every half second and every meter at a minimum.
     	locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 1, locationListener);
     	
+    	//Get the Last known good location to start tracking faster
     	Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        //while(lastLocation == null)
-        	//locationListener.onLocationChanged(lastLocation);
+        
     	if(lastLocation != null)
     		tracker = new Tracking(lastLocation);
     	else{
     		while(curLocation == null)
     			{
-    			 //wait(2000);
+    			 
     			}
     		
     		tracker = new Tracking(curLocation);
     	}
         mapOverlays = mapView.getOverlays();
-        Drawable drawable = this.getResources().getDrawable(R.drawable.runner_dot_blue);
+        Drawable drawable = this.getResources().getDrawable(R.drawable.runner_blue_dot);
+        
         itemizedOverlay = new MapOverlayItems(drawable,this);
     	
     	GeoPoint place = new GeoPoint(tracker.getCurrentLat(), tracker.getCurrentLong());
@@ -237,34 +236,42 @@ public class MapRunner extends MapActivity {
         
         mapController.animateTo(place);
     }
+    
+    //Enable the ability to query the GPS
     private void enableLocationSettings()
     {
     	Intent settingsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
     	startActivity(settingsIntent);
     }
     
+    //Stop querying the GPS when the view is closed
     protected void onStop()
     {
     	super.onStop();
     	locationManager.removeUpdates(locationListener);
     }
     
+    //Flag to stop updating route information
     public void onPauseSwitch(View view)
     {
     	onPause = !onPause;
     	
     }
     
+    /*
+     * Code for what happens when the Stop Button is pressed
+     */
     public void onStopPressed(View view)
     {
-    	//Code to save the metrics and information from the current run
+    	//Code to stop updating and save the metrics and information from the current run
     	onPauseSwitch(view);
     	if(tracker != null)
     	{
-    		LiveMetrics metrics = new LiveMetrics();
-    		User tempUser = hardUser();
-    		int calories = metrics.getCurrentCalories(tracker.getRoute(), tempUser);
+    		LiveMetrics metrics = new LiveMetrics();									//Metric Calculations
+    		User tempUser = hardUser();													//Static user for testing
+    		int calories = metrics.getCurrentCalories(tracker.getRoute(), tempUser);	//Calculate the Calories burned
     		
+    		//Finalize the current run data
     		currentRun.setDistance(currentDistCalc.getDistance());
     		currentRun.setAverage_speed(avgSpeed);
     		currentRun.setTime_hours(((int)timeHolder)/3600);
@@ -274,6 +281,7 @@ public class MapRunner extends MapActivity {
     		
     		appController.updateRun(currentRun);
     		
+    		//Launch the Metric display view
     		Intent intentUser = new Intent(MapRunner.this, RunLogActivity.class);
     		
     		intentUser.putExtra(EXTRA_MESSAGE, R.string.menu_run);
@@ -281,7 +289,10 @@ public class MapRunner extends MapActivity {
     		startActivity(intentUser);
     	}    	
     }
-    
+    /**
+     * Hard coded User for testing without the complete database connections
+     * @return User
+     */
     private User hardUser()
     {
     	User temp = new User();

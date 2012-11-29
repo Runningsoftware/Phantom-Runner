@@ -19,10 +19,11 @@ public final class R {
         public static final int log_button=0x7f020005;
         public static final int more_button=0x7f020006;
         public static final int run_button=0x7f020007;
-        public static final int runner_dot_blue=0x7f020008;
-        public static final int set_button=0x7f020009;
-        public static final int timer_button=0x7f02000a;
-        public static final int unlock_button=0x7f02000b;
+        public static final int runner_blue_dot=0x7f020008;
+        public static final int runner_dot_blue=0x7f020009;
+        public static final int set_button=0x7f02000a;
+        public static final int timer_button=0x7f02000b;
+        public static final int unlock_button=0x7f02000c;
     }
     public static final class id {
         public static final int ageInput=0x7f070021;
