@@ -3,6 +3,7 @@ package com.teamPhantomRunners.phantomrunner;
 import java.util.Calendar;
 import java.util.Date;
 
+//Class for holding the information about a current run
 public class Run 
 {
 	private double average_speed;

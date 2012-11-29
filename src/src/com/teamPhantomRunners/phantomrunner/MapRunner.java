@@ -26,7 +26,11 @@ import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-
+/**
+ * Main map view for showing the current track and updating the navigation information
+ * @author Andrew
+ *
+ */
 public class MapRunner extends MapActivity {
 	private LocationManager locationManager;		//GPS Manager for the location information
 	private LocationProvider locationProvider;		//Unused currently
@@ -103,6 +107,7 @@ public class MapRunner extends MapActivity {
                 
         		if(!onPause)
         		{
+        			//Update the navigation information for use by the metrics analysis classes
         			if(tracker != null)
         				tracker.updateRoute(curLocation);
         			else
@@ -118,15 +123,16 @@ public class MapRunner extends MapActivity {
         			mapController.animateTo(place);
         			
         			currentDistCalc.addDistance(tracker.getRoute());
-        			
+        			//Update onscreen metrics
         			double dist = (Math.round(currentDistCalc.getDistance()*1000))/10.0;
         			((TextView)findViewById(R.id.distanceText)).setText(Double.toString(dist) + " m");
         			timeHolder = tracker.getRoute().getTime();
         			((TextView)findViewById(R.id.time_run)).setText(Long.toString(timeHolder) +" s");
-        			avgSpeed = Math.round((dist/timeHolder)*1000)/1000.0;
+        			avgSpeed = Math.round((dist/timeHolder)*1000.0)/1000.0;
         			((TextView)findViewById(R.id.avgSpeed_txt)).setText(Double.toString(avgSpeed)+ " m/s");
         		}else
         		{
+        			//Navigate to the current location while paused without updating the route
         			GeoPoint place = new GeoPoint((int)(curLocation.getLatitude()*1E6),(int)(curLocation.getLongitude()*1E6));
         			
         			mapController.animateTo(place);
@@ -223,6 +229,7 @@ public class MapRunner extends MapActivity {
     		
     		tracker = new Tracking(curLocation);
     	}
+    	//Initialize the ovrlay for drawing dots at gps locations
         mapOverlays = mapView.getOverlays();
         Drawable drawable = this.getResources().getDrawable(R.drawable.runner_blue_dot);
         
@@ -233,7 +240,7 @@ public class MapRunner extends MapActivity {
         
         itemizedOverlay.addOverlay(locationPoint);
         mapOverlays.add(itemizedOverlay);
-        
+        //Move the app to the current gps location
         mapController.animateTo(place);
     }
     

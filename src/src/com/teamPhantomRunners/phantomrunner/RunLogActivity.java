@@ -39,6 +39,7 @@ public class RunLogActivity extends Activity {
     
     public void setTextFields()
     {
+    	//Set the text on the screen according to the current run data
     	Run currentRun = appController.getCurrentRun();
     	
     	((TextView)findViewById(R.id.date2_text)).setText(currentRun.getDate());
