@@ -40,9 +40,12 @@ public class MapRunner extends MapActivity {
 	private Location curLocation;					//Current Location information
 	private boolean locationAvailable = true;		//Unused boolean depricated
 	private boolean onPause = false;					//Flag for the location when the user presses pause
-	private Run currentRun = new Run();				//Holder for the current run
-	private DistanceUp currentDistance = new DistanceUp();		//Increments the distance on the fly
+	private Run currentRun;				//Holder for the current run
+	private DistanceUp currentDistCalc = new DistanceUp();		//Increments the distance on the fly
 	private ApplicationPR appController; 			//Controller for global Application data
+	private double avgSpeed = 0.0;					//Average Speed holder
+	private long timeHolder = 0;					//Total time holder
+	public final static String EXTRA_MESSAGE = "com.example.PhantomRunner.MESSAGE";
 	@Override
     /**
      * The method that happens when the view first gets created. 
@@ -60,6 +63,7 @@ public class MapRunner extends MapActivity {
         mapController = mapView.getController();
         mapController.setZoom(18);      
         appController = (ApplicationPR)getApplicationContext();
+        currentRun = appController.getCurrentRun();
         registerLocationListeners();				//Start tracking processes
         
     }
@@ -113,14 +117,14 @@ public class MapRunner extends MapActivity {
                 
         			mapController.animateTo(place);
         			
-        			currentDistance.addDistance(tracker.getRoute());
+        			currentDistCalc.addDistance(tracker.getRoute());
         			
-        			double dist = (Math.round(currentDistance.getDistance()*1000))/10.0;
+        			double dist = (Math.round(currentDistCalc.getDistance()*1000))/10.0;
         			((TextView)findViewById(R.id.distanceText)).setText(Double.toString(dist) + " m");
-        			long tme = tracker.getRoute().getTime();
-        			((TextView)findViewById(R.id.time_run)).setText(Long.toString(tme) +" s");
-        			double avgSpd = Math.round((dist/tme)*1000)/1000.0;
-        			((TextView)findViewById(R.id.avgSpeed_txt)).setText(Double.toString(avgSpd)+ " m/s");
+        			timeHolder = tracker.getRoute().getTime();
+        			((TextView)findViewById(R.id.time_run)).setText(Long.toString(timeHolder) +" s");
+        			avgSpeed = Math.round((dist/timeHolder)*1000)/1000.0;
+        			((TextView)findViewById(R.id.avgSpeed_txt)).setText(Double.toString(avgSpeed)+ " m/s");
         		}else
         		{
         			GeoPoint place = new GeoPoint((int)(curLocation.getLatitude()*1E6),(int)(curLocation.getLongitude()*1E6));
@@ -257,12 +261,20 @@ public class MapRunner extends MapActivity {
     	onPauseSwitch(view);
     	if(tracker != null)
     	{
-    	
-    		currentRun.setDistance(currentDistance.getDistance());
+    		currentRun.setDistance(currentDistCalc.getDistance());
+    		currentRun.setAverage_speed(avgSpeed);
+    		currentRun.setTime_hours(((int)timeHolder)/3600);
+    		currentRun.setTime_min((((int)timeHolder)%3600)/60);
+    		currentRun.setTime_sec(((int)timeHolder)%60);
     		
-    	}
-    	
-    	
+    		appController.updateRun(currentRun);
+    		
+    		Intent intentUser = new Intent(MapRunner.this, RunLogActivity.class);
+    		
+    		intentUser.putExtra(EXTRA_MESSAGE, R.string.menu_run);
+
+    		startActivity(intentUser);
+    	}    	
     }
     
 

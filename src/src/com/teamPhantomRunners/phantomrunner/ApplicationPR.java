@@ -8,6 +8,7 @@ public class ApplicationPR extends Application {
 
 	private DatabaseWorker userDatabase;
 	private User user;
+	private Run currentRun;
 	
 	public ApplicationPR() {
 		// TODO Auto-generated constructor stub
@@ -18,6 +19,7 @@ public class ApplicationPR extends Application {
 		super.onCreate();
 		user = new User();
 		userDatabase = new DatabaseWorker(this.getBaseContext());
+		currentRun = new Run();
 		//userDatabase = new DatabaseWorker();
 	}
 	
@@ -28,6 +30,16 @@ public class ApplicationPR extends Application {
 	public User getUserInfo()
 	{
 		return user;
+	}
+	
+	public Run getCurrentRun()
+	{
+		return currentRun;
+	}
+	
+	public void updateRun(Run newRun)
+	{
+		currentRun = newRun;
 	}
 
 }

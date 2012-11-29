@@ -38,6 +38,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.teamPhantomRunners.phantomrunner.PhantomRunner" />
         </activity>
+        <activity
+            android:name=".RunLogActivity"
+            android:label="@string/title_activity_run_log" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamPhantomRunners.phantomrunner.PhantomRunner" />
+        </activity>
     </application>
 
 </manifest>

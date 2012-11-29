@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Run 
 {
-	private int average_speed;
+	private double average_speed;
 	private String speed_units;
 	private double distance;
 	private String distance_units;
@@ -18,7 +18,7 @@ public class Run
 	
 	public Run()
 	{
-		average_speed = 0;
+		average_speed = 0.0;
 		speed_units = "mph";
 		distance = 0.0;
 		distance_units = "m";
@@ -27,12 +27,15 @@ public class Run
 		time_sec = 0;
 		calories = 0;
 		top_speed = 0;
-		run_date = Calendar.getInstance().toString();
+		Calendar newDay = Calendar.getInstance();
+		run_date = Integer.toString(newDay.get(Calendar.MONTH)) + "/" + 
+				Integer.toString(newDay.get(Calendar.DATE)) + "/" + 
+				Integer.toString(newDay.get(Calendar.YEAR));
 	}
-	public int getAverage_speed() {
+	public double getAverage_speed() {
 		return average_speed;
 	}
-	public void setAverage_speed(int average_speed) {
+	public void setAverage_speed(double average_speed) {
 		this.average_speed = average_speed;
 	}
 	public String getSpeed_units() {
