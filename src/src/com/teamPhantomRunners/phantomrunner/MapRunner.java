@@ -261,11 +261,16 @@ public class MapRunner extends MapActivity {
     	onPauseSwitch(view);
     	if(tracker != null)
     	{
+    		LiveMetrics metrics = new LiveMetrics();
+    		User tempUser = hardUser();
+    		int calories = metrics.getCurrentCalories(tracker.getRoute(), tempUser);
+    		
     		currentRun.setDistance(currentDistCalc.getDistance());
     		currentRun.setAverage_speed(avgSpeed);
     		currentRun.setTime_hours(((int)timeHolder)/3600);
     		currentRun.setTime_min((((int)timeHolder)%3600)/60);
     		currentRun.setTime_sec(((int)timeHolder)%60);
+    		currentRun.setCalories(calories);
     		
     		appController.updateRun(currentRun);
     		
@@ -275,6 +280,19 @@ public class MapRunner extends MapActivity {
 
     		startActivity(intentUser);
     	}    	
+    }
+    
+    private User hardUser()
+    {
+    	User temp = new User();
+    	temp.set_age(35);
+    	temp.set_email("andvan@knights.ucf.edu");
+    	temp.set_height(6,0);
+    	temp.set_name("Andrew VanDemark");
+    	temp.set_password("andvan");
+    	temp.set_Weight(205);
+    	
+    	return temp;
     }
     
 

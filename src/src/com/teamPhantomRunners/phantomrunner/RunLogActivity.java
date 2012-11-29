@@ -41,7 +41,8 @@ public class RunLogActivity extends Activity {
     {
     	Run currentRun = appController.getCurrentRun();
     	
-    	((TextView)findViewById(R.id.date_text)).setText(currentRun.getDate());
+    	((TextView)findViewById(R.id.date2_text)).setText(currentRun.getDate());
+    	
     	((TextView)findViewById(R.id.dist_text)).setText(Double.toString(currentRun.getDistance()));
     	
     	String time = Integer.toString(currentRun.getTime_hours()) + ":" + 
@@ -50,6 +51,8 @@ public class RunLogActivity extends Activity {
     	((TextView)findViewById(R.id.time_txt)).setText(time);
     	
     	((TextView)findViewById(R.id.avgSpd_text)).setText(Double.toString(currentRun.getAverage_speed()) + " m/s");
+    	
+    	((TextView)findViewById(R.id.calories_text)).setText(Integer.toString(currentRun.getCalories()) + " cal");
     }
 
 }

@@ -32,7 +32,7 @@ public class LiveMetrics {
 	public int getCurrentCalories(Route curRoute, User usr)
 	{
 		//code to calculate calories .73*weight*distance(miles)
-		this.currentCalories = (int)(.73 * usr.get_Weight() * Utilities.kmToMiles(this.getTotalDistance(curRoute)));
+		this.currentCalories = (int)(.73 * usr.get_Weight() * Utilities.kmToMiles(LiveMetrics.getTotalDistance(curRoute)));
 		
 		return currentCalories;
 	}
