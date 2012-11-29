@@ -64,6 +64,12 @@ public class Route {
 		return route.getFirst().getLongitude();
 	}
 	
+	public String getTime()
+	{
+		long runTime = route.getLast().getTimeStamp() -route.getFirst().getTimeStamp();
+		
+		return Long.toString(runTime/1000)+ " s";
+	}
 	public String getRoute()
 	{
 		//code for the route as a string

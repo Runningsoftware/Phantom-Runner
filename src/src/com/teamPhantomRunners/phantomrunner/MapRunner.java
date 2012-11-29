@@ -22,6 +22,7 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -38,7 +39,7 @@ public class MapRunner extends MapActivity {
 	private OverlayItem locationPoint;				//The loacation point
 	private Location curLocation;					//Current Location information
 	private boolean locationAvailable = true;		//Unused boolean depricated
-	private boolean onPause = true;					//Flag for the location when the user presses pause
+	private boolean onPause = false;					//Flag for the location when the user presses pause
 	private Run currentRun = new Run();				//Holder for the current run
 	private DistanceUp currentDistance = new DistanceUp();		//Increments the distance on the fly
 	private ApplicationPR appController; 			//Controller for global Application data
@@ -110,10 +111,12 @@ public class MapRunner extends MapActivity {
         			itemizedOverlay.addOverlay(locationPoint);
         			mapOverlays.add(itemizedOverlay);
                 
-                
         			mapController.animateTo(place);
         			
         			currentDistance.addDistance(tracker.getRoute());
+        			
+        			((TextView)findViewById(R.id.distanceText)).setText(Double.toString((Math.round(currentDistance.getDistance()*1000))/100.0) + " m");
+        			((TextView)findViewById(R.id.time_run)).setText(tracker.getRoute().getTime());
         		}else
         		{
         			GeoPoint place = new GeoPoint((int)(curLocation.getLatitude()*1E6),(int)(curLocation.getLongitude()*1E6));
